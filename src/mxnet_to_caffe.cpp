@@ -48,6 +48,7 @@ namespace MXNet {
 	/*! \brief constructor to set type of MXNet */
     	MXNetConverter() {
       		//this->net_type_ = 0;
+      		firstConv=true;
     	}
 	/*! \brief destructors just free up unused space */
     	~MXNetConverter() {
@@ -140,10 +141,13 @@ namespace MXNet {
             				for (int c = 0; c < caffe_weight.channels(); c++) { // RGB (3)
             					for (int h = 0; h < caffe_weight.height(); h++) {
             						 for (int w = 0; w < caffe_weight.width(); w++) {
-                						// RGB -> BGR
+                						// RGB -> BGR, ONLY IF THIS IS THE FIRST CONVOLUTIONAL LAYER!
                 						int switched=c;
-                						if (switched==0) switched=2;
-                						else if (switched==2) switched=0;
+                						if (firstConv)
+                						{
+                							if (switched==0) switched=2;
+                							else if (switched==2) switched=0;
+                						}
                 						// Store info
 								int index= (r*caffe_weight.channels()*caffe_weight.height()*caffe_weight.width()) + ((switched * caffe_weight.height() + h) * caffe_weight.width() + w );
 								dataWeight[idx] = weights[index];
@@ -156,6 +160,8 @@ namespace MXNet {
 
 				/*! \brief transfer bias value from MXNet to caffe net */
 				caffe::caffe_copy(caffe_bias.count(), bias, caffe_bias.mutable_cpu_data());
+				
+				firstConv=false;
 	}
 	
 	inline void TransferNet()
@@ -254,6 +260,8 @@ namespace MXNet {
 	PredictorHandle MXNetNet;
     	/*! \brief caffe net reference */
     	caffe::shared_ptr<caffe::Net<float> > caffe_net_;
+    	
+    	bool firstConv;
 };
 }
 
