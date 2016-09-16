@@ -1,3 +1,4 @@
 ./mxnet_to_caffe
 objs/*.o
 src/*~
+*~
