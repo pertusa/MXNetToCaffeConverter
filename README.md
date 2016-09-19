@@ -15,7 +15,7 @@ changed. Then, run "make" from the terminal.
 The program needs these parameters:
 
 ```
-./mxnet_to_caffe \<mxnet_json\> \<mxnet_model\> \<caffe_prototxt\> \<caffe_model_output\>
+./mxnet_to_caffe <mxnet_json> <mxnet_model> <caffe_prototxt> <caffe_model_output>
 ```
 
 As an example, you can download the Inception21K model from: 
