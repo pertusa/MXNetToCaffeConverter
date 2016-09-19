@@ -20,15 +20,14 @@ The program needs these parameters:
 
 As an example, you can download the Inception21K model from: 
 
-```
 http://data.dmlc.ml/mxnet/models/imagenet/inception-21k.tar.gz
-```
+
 
 And its corresponding Caffe deploy.prototxt from:
 
-```
+
 https://github.com/pertusa/InceptionBN-21K-for-Caffe
-```
+
 
 Then, run:
 
