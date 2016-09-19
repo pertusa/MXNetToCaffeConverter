@@ -1,6 +1,6 @@
 # MXNet to Caffe model converter
 
-This software converts a MXNet model to Caffe. 
+Code to convert a MXNet model to Caffe. 
 
 BatchNorm, Convolution and InnerProduct layers are supported.
 
@@ -14,20 +14,30 @@ changed. Then, run "make" from the terminal.
 
 The program needs these parameters:
 
+```
 ./mxnet_to_caffe \<mxnet_json\> \<mxnet_model\> \<caffe_prototxt\> \<caffe_model_output\>
+```
 
 As an example, you can download the Inception21K model from: 
 
+```
 http://data.dmlc.ml/mxnet/models/imagenet/inception-21k.tar.gz
+```
 
 And its corresponding Caffe deploy.prototxt from:
 
+```
 https://github.com/pertusa/InceptionBN-21K-for-Caffe
+```
 
 Then, run:
 
+```
 ./mxnet_to_caffe Inception-symbol.json Inception-0009.params deploy.prototxt Inception21k.caffemodel
+```
 
-The file "Inception21k.caffemodel" will be generated with the Caffe weights.
+And the file "Inception21k.caffemodel" will be generated with the Caffe weights.
+
+This code is based on the CXXNet to Caffe converter (https://github.com/n3011/cxxnet_converter).
 
 License: GNU Public license
