@@ -1,6 +1,4 @@
-# MXNet to Caffe model converter
-
-Code to convert a MXNet model to Caffe. 
+# Code to convert a MXNet model into Caffe (C++)
 
 BatchNorm, Convolution and InnerProduct layers are supported.
 
